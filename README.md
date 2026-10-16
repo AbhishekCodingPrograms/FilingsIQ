@@ -14,7 +14,7 @@ An AI-assisted research tool for exploring company risks in SEC Form 10-K filing
 [![FastEmbed](https://img.shields.io/badge/Embeddings-FastEmbed-0F766E)](https://github.com/qdrant/fastembed)
 [![Groq](https://img.shields.io/badge/LLM-Groq-F55036)](https://groq.com/)
 
-[Getting started](#getting-started) · [How it works](#how-it-works) · [Limitations](#verification-and-limitations)
+[Problem](#problem-statement) · [Solution](#our-solution) · [Technologies](#technologies-used) · [Getting started](#getting-started)
 
 </div>
 
@@ -25,6 +25,16 @@ An AI-assisted research tool for exploring company risks in SEC Form 10-K filing
 FilingsIQ combines semantic retrieval with language-model answer generation to help users research business risks disclosed in SEC filings. The application retrieves passages from a local ChromaDB index, asks Groq to answer using those excerpts, checks citation references, and presents the relevant SEC links for review.
 
 > **Research aid, not financial advice.** Generated answers and verification statuses require human review against the original filing.
+
+## Problem statement
+
+Company Form 10-K reports contain detailed information about business risks, but finding and comparing the relevant sections can take time. Readers may need to search long documents manually, and it can be difficult to quickly trace a summary back to the filing that supports it.
+
+## Our solution
+
+FilingsIQ makes this research easier by searching indexed 10-K excerpts with a user's question. It uses the retrieved passages to draft a concise answer, labels its references, and shows the filing date, excerpt, and original SEC link for review. A separate LLM-assisted check can flag claims that may need closer attention.
+
+In simple terms: **ask a question, review the relevant filing evidence, then verify important conclusions in the original SEC report.** FilingsIQ supports research; it does not replace reading source documents or professional judgment.
 
 ## What you can do
 
