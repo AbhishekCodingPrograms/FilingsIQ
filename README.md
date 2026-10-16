@@ -38,21 +38,9 @@ FilingsIQ combines semantic retrieval with language-model answer generation to h
 
 ## How it works
 
-```mermaid
-flowchart LR
-    A[SEC EDGAR filings] --> B[Extract filing text]
-    B --> C[Split into chunks]
-    C --> D[FastEmbed]
-    D --> E[(ChromaDB)]
-    F[Research question] --> G[Query embedding]
-    G --> E
-    E --> H[Retrieved excerpts]
-    H --> I[Groq answer with source labels]
-    I --> J[Citation reference check]
-    I --> K[Claim review]
-    J --> L[Streamlit results and SEC links]
-    K --> L
-```
+![FilingsIQ end-to-end project flowchart](docs/architecture.svg)
+
+*The diagram shows the offline filing-index build and the live question-answering path.*
 
 The Streamlit interface in `app.py` calls `src/agent/basic_rag.py` for retrieval, answer generation, and verification. The deployment-ready ChromaDB index is included as a snapshot; raw filing downloads and intermediate processing files remain excluded from Git.
 
