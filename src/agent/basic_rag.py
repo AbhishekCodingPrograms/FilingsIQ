@@ -8,6 +8,8 @@ import chromadb
 from dotenv import load_dotenv
 from fastembed import TextEmbedding
 from groq import Groq
+import streamlit as st
+from streamlit.errors import StreamlitSecretNotFoundError
 
 try:
     from .citation_verifier import verify_claims
@@ -22,6 +24,19 @@ COLLECTION_NAME = "filingsiq_10k"
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 
 load_dotenv(ROOT / ".env")
+
+
+def _get_config_value(name: str) -> str | None:
+    value = os.getenv(name)
+    if value and value.strip():
+        return value
+
+    try:
+        value = st.secrets.get(name)
+    except StreamlitSecretNotFoundError:
+        return None
+
+    return value if isinstance(value, str) and value.strip() else None
 
 
 def detect_companies(question: str) -> list[str]:
@@ -60,13 +75,19 @@ def validate_citations(answer: str, sources: list[dict]) -> list[str]:
 @lru_cache(maxsize=1)
 def get_resources():
     """Initialize expensive resources once per Python process."""
-    api_key = os.getenv("GROQ_API_KEY")
-    model_name = os.getenv("GROQ_MODEL")
+    api_key = _get_config_value("GROQ_API_KEY")
+    model_name = _get_config_value("GROQ_MODEL")
 
     if not api_key:
-        raise ValueError("GROQ_API_KEY is missing from .env")
+        raise ValueError(
+            "GROQ_API_KEY is not configured. Add it to Streamlit app "
+            "Settings > Secrets, or set it in .env for local development."
+        )
     if not model_name:
-        raise ValueError("GROQ_MODEL is missing from .env")
+        raise ValueError(
+            "GROQ_MODEL is not configured. Add it to Streamlit app "
+            "Settings > Secrets, or set it in .env for local development."
+        )
 
     db = chromadb.PersistentClient(path=str(DB_DIR))
     collection = db.get_collection(COLLECTION_NAME)
