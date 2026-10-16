@@ -161,6 +161,8 @@ The repository includes a ChromaDB snapshot containing the `filingsiq_10k` colle
 4. Save the secrets and deploy/reboot the app. Do not put these values in GitHub files, commits, or the repository's README.
 5. Submit a research question and verify that the answer displays sources from the indexed SEC excerpts.
 
+For an app that is already created, confirm it is connected to this repository's `main` branch with `app.py` as its entry point. After pushing an update, let Streamlit rebuild the app; after changing secrets, use **Manage app → Reboot app** if it does not restart automatically.
+
 The index is a snapshot and does not update automatically when the SEC publishes new filings. To refresh it, rebuild `chroma_db/` using the local indexing steps, then commit and push the updated database snapshot. The ChromaDB version is pinned in `requirements.txt` to match the persisted index format.
 
 If a secret is missing, the app reports which setting needs to be added. If the index cannot be loaded, check that the repository's `chroma_db/` files were included in the deployment.
