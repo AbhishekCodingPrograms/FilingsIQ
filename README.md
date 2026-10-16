@@ -1,10 +1,18 @@
 <div align="center">
 
+<img src="docs/filingsiq-logo.svg" alt="FilingsIQ logo" width="112" height="112">
+
 # FilingsIQ
 
 ### SEC filing research, grounded in the source.
 
 An AI-assisted research tool for exploring company risks in SEC Form 10-K filings. Search filing excerpts, review source-linked answers, and inspect an LLM-assisted claim check in one Streamlit interface.
+
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![ChromaDB](https://img.shields.io/badge/Vector%20DB-ChromaDB-5B4DCE)](https://www.trychroma.com/)
+[![FastEmbed](https://img.shields.io/badge/Embeddings-FastEmbed-0F766E)](https://github.com/qdrant/fastembed)
+[![Groq](https://img.shields.io/badge/LLM-Groq-F55036)](https://groq.com/)
 
 [Getting started](#getting-started) · [How it works](#how-it-works) · [Limitations](#verification-and-limitations)
 
@@ -25,16 +33,21 @@ FilingsIQ combines semantic retrieval with language-model answer generation to h
 - Review numbered source references, filing dates, excerpts, and SEC links.
 - Inspect citation-reference checks and LLM-assisted claim-review findings.
 
-## Technology
+## Technologies used
 
-| Layer | Technology |
+| Technology | Role in FilingsIQ |
 | --- | --- |
-| User interface | Streamlit |
-| Answer generation and claim review | Groq API |
-| Embeddings | FastEmbed (`BAAI/bge-small-en-v1.5`) |
-| Vector search | ChromaDB |
-| Filing source | SEC EDGAR Form 10-K filings |
-| Language | Python |
+| **Python 3.11** | Application and ingestion pipeline |
+| **Streamlit** | Interactive research web interface |
+| **Groq API** | Evidence-grounded answer generation and LLM-assisted claim review |
+| **FastEmbed** | Query and filing embeddings using `BAAI/bge-small-en-v1.5` |
+| **ChromaDB** | Persistent vector index and semantic retrieval |
+| **SEC EDGAR** | Public source for company Form 10-K filings |
+| **Requests + Beautiful Soup 4** | Download and extract filing text |
+| **LangChain Text Splitters** | Split filing text into overlapping retrieval chunks |
+| **NumPy** | Store and pass embedding matrices during index construction |
+| **python-dotenv** | Load local development settings from `.env` |
+| **LangGraph** | Included as an auxiliary workflow prototype; the live Streamlit RAG path is implemented in `src/agent/basic_rag.py` |
 
 ## How it works
 

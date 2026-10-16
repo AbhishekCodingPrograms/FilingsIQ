@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">FilingsIQ logo</title>
+  <desc id="description">A filing document with a rising evidence graph, in indigo and teal.</desc>
+  <defs>
+    <linearGradient id="tile" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="160" y1="104" x2="360" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef2ff"/>
+    </linearGradient>
+    <filter id="shadow" x="100" y="66" width="330" height="400" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#111827" flood-opacity=".2"/>
+    </filter>
+  </defs>
+  <rect x="32" y="32" width="448" height="448" rx="112" fill="url(#tile)"/>
+  <circle cx="404" cy="112" r="44" fill="#ffffff" fill-opacity=".1"/>
+  <circle cx="100" cy="396" r="60" fill="#ffffff" fill-opacity=".08"/>
+  <g filter="url(#shadow)">
+    <path d="M158 108h144l70 70v210a22 22 0 0 1-22 22H158a22 22 0 0 1-22-22V130a22 22 0 0 1 22-22Z" fill="url(#paper)"/>
+    <path d="M302 108v54a16 16 0 0 0 16 16h54" fill="#dbeafe"/>
+    <path d="M302 108v54a16 16 0 0 0 16 16h54" fill="none" stroke="#c7d2fe" stroke-width="8" stroke-linejoin="round"/>
+  </g>
+  <rect x="174" y="216" width="150" height="13" rx="6.5" fill="#94a3b8"/>
+  <rect x="174" y="250" width="116" height="13" rx="6.5" fill="#cbd5e1"/>
+  <rect x="174" y="284" width="80" height="13" rx="6.5" fill="#cbd5e1"/>
+  <path d="M174 361l49-46 39 20 66-75" fill="none" stroke="#4f46e5" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="174" cy="361" r="11" fill="#0891b2" stroke="#fff" stroke-width="7"/>
+  <circle cx="223" cy="315" r="11" fill="#0891b2" stroke="#fff" stroke-width="7"/>
+  <circle cx="262" cy="335" r="11" fill="#0891b2" stroke="#fff" stroke-width="7"/>
+  <circle cx="328" cy="260" r="11" fill="#0891b2" stroke="#fff" stroke-width="7"/>
+</svg>
